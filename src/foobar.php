@@ -29,6 +29,9 @@ function foobar(int $number): string
     if($number % 5 === 0) {
         $result .= "Bar";
     }
+    if($number % 7 === 0) {
+        $result .= "Qix";
+    }
 
     return empty($result) ? (string) $number : $result;
 }
