@@ -17,5 +17,18 @@ if(function_exists('foobar')) {
  */
 function foobar(int $number): string
 {
-    return (string) $number;
+    if($number < 0) {
+        throw new \InvalidArgumentException('given number must be positive integer');
+    }
+
+    $result = "";
+
+    if($number % 3 === 0) {
+        $result .= "Foo";
+    }
+    if($number % 5 === 0) {
+        $result .= "Bar";
+    }
+
+    return empty($result) ? (string) $number : $result;
 }
