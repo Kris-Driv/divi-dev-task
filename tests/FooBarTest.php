@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers services.php
+ */
 class FooBarTest extends TestCase
 {
 
+    /**
+     * @covers foobar
+     */
     public function test_function_call_with_invalid_arguments()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -14,6 +20,9 @@ class FooBarTest extends TestCase
         foobar(-1);
     }
 
+    /**
+     * @covers foobar
+     */
     public function test_function_returns_integer_input_as_string()
     {
         $this->assertSame(foobar(1), (string) 1);
@@ -23,6 +32,9 @@ class FooBarTest extends TestCase
         $this->assertSame(foobar(11), (string) 11);
     }
 
+    /**
+     * @covers foobar
+     */
     public function test_function_returns_foo_bar()
     {
         $this->assertSame(foobar(3, false), "Foo");
@@ -34,6 +46,9 @@ class FooBarTest extends TestCase
         $this->assertSame(foobar(84, false), "Foo; Qix");
     }
 
+    /**
+     * @covers foobar
+     */
     public function test_function_returns_with_appending()
     {
         $this->assertSame(foobar(3, true), "Foo; Foo");

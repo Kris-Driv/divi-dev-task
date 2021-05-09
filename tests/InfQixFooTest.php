@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers services.php
+ */
 class InfQixFooTest extends TestCase
 {
 
+    /**
+     * @covers infqixfoo
+     */
     public function test_function_call_with_invalid_arguments()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -14,6 +20,9 @@ class InfQixFooTest extends TestCase
         infqixfoo(-1);
     }
 
+    /**
+     * @covers infqixfoo
+     */
     public function test_function_returns_integer_input_as_string()
     {
         $this->assertSame(infqixfoo(1), (string) 1);
@@ -23,6 +32,9 @@ class InfQixFooTest extends TestCase
         $this->assertSame(infqixfoo(11), (string) 11);
     }
 
+    /**
+     * @covers infqixfoo
+     */
     public function test_function_returns_inf_qix_foo_multiples_only()
     {
         $this->assertSame(infqixfoo(3, false), 'Foo');
@@ -31,6 +43,9 @@ class InfQixFooTest extends TestCase
         $this->assertSame(infqixfoo(35, false), 'QixInf');
     }
 
+    /**
+     * @covers infqixfoo
+     */
     public function test_function_returns_with_occurence_appending()
     {
         $this->assertSame(infqixfoo(3, true), 'Foo; Foo');
@@ -54,5 +69,4 @@ class InfQixFooTest extends TestCase
             print(sprintf('%d. %s%s', $i, infqixfoo($i), PHP_EOL));
         }
     }
-
 }
