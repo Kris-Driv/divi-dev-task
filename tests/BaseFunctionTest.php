@@ -7,6 +7,14 @@ use PHPUnit\Framework\TestCase;
 class BaseFunctionTest extends TestCase
 {
 
+    public function test_sum_of_digits()
+    {
+        $this->assertSame(sum_of_digits(123), 6);
+        $this->assertSame(sum_of_digits(1010), 2);
+        $this->assertSame(sum_of_digits(61), 7);
+        $this->assertSame(sum_of_digits(-61), 7);
+    }
+
     public function test_occurrences()
     {
         $this->assertSame(occurrences(333, FOOBAR_OCCURRENCE_MAP), ["Foo", "Foo", "Foo"]);

@@ -29,20 +29,20 @@ class FooBarTest extends TestCase
         $this->assertSame(foobar(5, false), "Bar");
         $this->assertSame(foobar(7, false), "Qix");
         $this->assertSame(foobar(14, false), "Qix");
-        $this->assertSame(foobar(15, false), "FooBar");
-        $this->assertSame(foobar(70, false), "BarQix");
-        $this->assertSame(foobar(84, false), "FooQix");
+        $this->assertSame(foobar(15, false), "Foo; Bar");
+        $this->assertSame(foobar(70, false), "Bar; Qix");
+        $this->assertSame(foobar(84, false), "Foo; Qix");
     }
 
     public function test_function_returns_with_appending()
     {
-        $this->assertSame(foobar(3, true), "FooFoo");
-        $this->assertSame(foobar(5, true), "BarBar");
-        $this->assertSame(foobar(7, true), "QixQix");
+        $this->assertSame(foobar(3, true), "Foo; Foo");
+        $this->assertSame(foobar(5, true), "Bar; Bar");
+        $this->assertSame(foobar(7, true), "Qix; Qix");
         $this->assertSame(foobar(14, true), "Qix");
-        $this->assertSame(foobar(15, true), "FooBarBar");
-        $this->assertSame(foobar(70, true), "BarQixQix");
-        $this->assertSame(foobar(84, true), "FooQix");
+        $this->assertSame(foobar(15, true), "Foo; Bar; Bar");
+        $this->assertSame(foobar(70, true), "Bar; Qix; Qix");
+        $this->assertSame(foobar(84, true), "Foo; Qix");
     }
 
 

@@ -23,23 +23,23 @@ class InfQixFooTest extends TestCase
         $this->assertSame(infqixfoo(11), (string) 11);
     }
 
-    public function test_function_returns_inf_qix_foo_multiples()
+    public function test_function_returns_inf_qix_foo_multiples_only()
     {
         $this->assertSame(infqixfoo(3, false), 'Foo');
-        $this->assertSame(infqixfoo(8, false), 'Inf');
-        $this->assertSame(infqixfoo(21, false), 'QixFoo');
-        $this->assertSame(infqixfoo(35, false), 'Qix');
+        $this->assertSame(infqixfoo(8, false), 'InfInf');
+        $this->assertSame(infqixfoo(21, false), 'Qix; Foo');
+        $this->assertSame(infqixfoo(35, false), 'QixInf');
     }
 
-    public function test_function_returns_with_appending()
+    public function test_function_returns_with_occurence_appending()
     {
-        $this->assertSame(infqixfoo(3, true), 'FooFoo');
-        $this->assertSame(infqixfoo(8, true), 'InfInf');
-        $this->assertSame(infqixfoo(21, true), 'QixFoo');
-        $this->assertSame(infqixfoo(24, true), 'InfFoo');
-        $this->assertSame(infqixfoo(35, true), 'QixFoo');
+        $this->assertSame(infqixfoo(3, true), 'Foo; Foo');
+        $this->assertSame(infqixfoo(8, true), 'Inf; InfInf');
+        $this->assertSame(infqixfoo(21, true), 'Qix; Foo');
+        $this->assertSame(infqixfoo(24, true), 'Inf; Foo');
+        $this->assertSame(infqixfoo(35, true), 'Qix; FooInf');
         $this->assertSame(infqixfoo(40, true), 'Inf');
-        $this->assertSame(infqixfoo(48, true), 'InfFooInf');
+        $this->assertSame(infqixfoo(48, true), 'Inf; Foo; Inf');
     }
 
 

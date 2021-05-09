@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+if (!defined('RESPONSE_GLUE')) {
+    define('RESPONSE_GLUE', '; ');
+}
+
 if (!defined('FOOBAR_MULTIPLE_MAP')) {
     define('FOOBAR_MULTIPLE_MAP', [
         3 => 'Foo',
@@ -22,7 +26,7 @@ if (!defined('INFQIXFOO_MULTIPLE_MAP')) {
     ]);
 }
 
-if(!defined('INFQIXFOO_OCCURRENCE_MAP')) {
+if (!defined('INFQIXFOO_OCCURRENCE_MAP')) {
     define('INFQIXFOO_OCCURRENCE_MAP', INFQIXFOO_MULTIPLE_MAP);
 }
 
@@ -42,8 +46,10 @@ if (!function_exists('foobar')) {
      */
     function foobar(int $number, bool $appendOccurrences = true): string
     {
-        $result = implode('', array_merge(
-                multiples($number, FOOBAR_MULTIPLE_MAP), 
+        $result = implode(
+            RESPONSE_GLUE,
+            array_merge(
+                multiples($number, FOOBAR_MULTIPLE_MAP),
                 ($appendOccurrences ? occurrences($number, FOOBAR_OCCURRENCE_MAP) : [])
             )
         );
@@ -55,7 +61,8 @@ if (!function_exists('foobar')) {
 if (!function_exists("infqixfoo")) {
     /**
      * Concatenates return values of multiples() and occurrences() calls
-     * otherwise returns same input casted to string.
+     * otherwise returns same input casted to string. And if sum of digits is multiple of 8
+     * the resulting string will be appended with 'Inf'
      * 
      * If passed value is negative an exception will be thrown
      * 
@@ -67,11 +74,16 @@ if (!function_exists("infqixfoo")) {
      */
     function infqixfoo(int $number, bool $appendOccurrences = true): string
     {
-        $result = implode('', array_merge(
-            multiples($number, INFQIXFOO_MULTIPLE_MAP), 
-            ($appendOccurrences ? occurrences($number, INFQIXFOO_OCCURRENCE_MAP) : [])
+        $result = implode(
+            RESPONSE_GLUE,
+            array_merge(
+                multiples($number, INFQIXFOO_MULTIPLE_MAP),
+                ($appendOccurrences ? occurrences($number, INFQIXFOO_OCCURRENCE_MAP) : [])
             )
         );
+        if (sum_of_digits($number) % 8 === 0) {
+            $result .= "Inf";
+        }
 
         return empty($result) ? (string) $number : $result;
     }
