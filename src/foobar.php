@@ -14,6 +14,18 @@ if (!defined('FOOBAR_OCCURRENCE_MAP')) {
     define('FOOBAR_OCCURRENCE_MAP', FOOBAR_MULTIPLE_MAP);
 }
 
+if (!defined('INFQIXFOO_MULTIPLE_MAP')) {
+    define('INFQIXFOO_MULTIPLE_MAP', [
+        8 => 'Inf',
+        7 => 'Qix',
+        3 => 'Foo'
+    ]);
+}
+
+if(!defined('INFQIXFOO_OCCURRENCE_MAP')) {
+    define('INFQIXFOO_OCCURRENCE_MAP', INFQIXFOO_MULTIPLE_MAP);
+}
+
 if (!function_exists('foobar')) {
 
     /**
@@ -31,6 +43,27 @@ if (!function_exists('foobar')) {
     function foobar(int $number, bool $appendOccurrences = true): string
     {
         $result = foobar_multiples($number, FOOBAR_MULTIPLE_MAP) . ($appendOccurrences ? foobar_occurrences($number, FOOBAR_OCCURRENCE_MAP) : '');
+
+        return empty($result) ? (string) $number : $result;
+    }
+}
+
+if (!function_exists("infqixfoo")) {
+    /**
+     * Concatenates return values of foobar_multiples() and foobar_occurrences() calls
+     * otherwise returns same input casted to string.
+     * 
+     * If passed value is negative an exception will be thrown
+     * 
+     * @see foobar_multiples()
+     * @see foobar_occurrences()
+     * 
+     * @throws InvalidArgumentException
+     * @param int $number unsigned integer
+     */
+    function infqixfoo(int $number, bool $appendOccurrences = true): string
+    {
+        $result = foobar_multiples($number, INFQIXFOO_MULTIPLE_MAP) . ($appendOccurrences ? foobar_occurrences($number, INFQIXFOO_OCCURRENCE_MAP) : '');
 
         return empty($result) ? (string) $number : $result;
     }
