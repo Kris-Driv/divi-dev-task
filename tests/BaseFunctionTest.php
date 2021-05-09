@@ -39,6 +39,7 @@ class BaseFunctionTest extends TestCase
         $this->assertSame(sum_of_digits(1010), 2);
         $this->assertSame(sum_of_digits(61), 7);
         $this->assertSame(sum_of_digits(-61), 7);
+        $this->assertSame(sum_of_digits(0), 0);
     }
 
     /**

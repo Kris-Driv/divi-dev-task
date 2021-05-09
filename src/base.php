@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 /**
  * Searches for multiples in map keys and appends appropriate value to return if such multiple is found
- * if no map is given then the default FOOBAR_MULTIPLE_MAP is used
  * 
  * @see FOOBAR_MULTIPLE_MAP
  * @throws InvalidArgumentException
@@ -28,7 +27,6 @@ function multiples(int $number, array $multipleMap): array
 
 /**
  * Translates digit occurences in number to their appropriate values from given map
- * if no map is given then the default FOOBAR_OCCURENCE_MAP is used
  * 
  * @see FOOBAR_OCCURENCE_MAP
  * @throws InvalidArgumentException
