@@ -14,7 +14,8 @@
     ],
     "autoload": {
         "files": [
-            "./src/foobar.php"
+            "./src/base.php",
+            "./src/services.php"
         ]
     },
     "minimum-stability": "dev",
